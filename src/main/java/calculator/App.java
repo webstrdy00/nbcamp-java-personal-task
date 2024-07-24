@@ -10,7 +10,7 @@ public class App {
         ArrayList<Integer> results = new ArrayList<Integer>();   //  연산결과를 무한히 저장하는 배열
 
         while (true){   // while문을 통해 반복 실행
-            System.out.print("첫 번째 숫자를 입력 (종료 : 'exit', 첫 번째 결과 삭제 : 'remove') ");
+            System.out.print("첫 번째 숫자를 입력 (종료 : 'exit', 첫 번째 결과 삭제 : 'remove', 모든 결과 출력 : 'inquiry') ");
             String input = scanner.next();
 
             if (input.equalsIgnoreCase("exit")) {   // input이 exit일 경우 프로그램 종료
@@ -21,13 +21,14 @@ public class App {
                     int removeResult = results.remove(0);   // 가장 먼저 저장된 결과 삭제
                     System.out.println("가장 먼저 저장된 결과 " + removeResult+ "가 삭제되었습니다.");
                     System.out.println( );
-                    continue;
                 }else{   // 배열이 비어있을 경우
                     System.out.println("삭제할 결과가 없습니다.");
                     System.out.println( );
-                    continue;
                 }
-
+                continue;
+            }else if (input.equalsIgnoreCase("inquiry")){ //  input이 inquiry 경우 저장된 연산 결과 전부를 출력
+                printResults(results);
+                continue;
             }
 
             int num1;  
@@ -92,5 +93,17 @@ public class App {
             System.out.println((i+1)+"번째 계산 결과는 "+results.get(i)+"입니다.");
         }
         scanner.close();
+    }
+    // 저장된 결과를 출력하는 메서드
+    private static void printResults(ArrayList<Integer> results) {
+        if (results.isEmpty()){
+            System.out.println("저장된 결과가 없습니다.");
+        }else {
+            int index = 1;
+            for (int result : results){
+                System.out.println(index+"번째 결과는 "+result+"입니다.");
+                index++;
+            }
+        }
     }
 }
