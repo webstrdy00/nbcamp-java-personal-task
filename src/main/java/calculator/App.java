@@ -6,7 +6,8 @@ public class App {
 
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
-        int result = 0;
+        int[] results = new int[10];   //  연산결과를 저장하는 배열 
+        int count = 0;     // 저장된 결과의 개수를 알려주는 변수
 
         while (true){   // while문을 통해 반복 실행
             System.out.print("첫 번째 숫자를 입력 (종료 : 'exit') ");
@@ -38,6 +39,8 @@ public class App {
             System.out.print("사칙연산 기호를 입력 ('+', '-', '*', '/') ");
             char operator = scanner.next().charAt(0);  // 사칙연산 저장
 
+            int result = 0;
+
             switch (operator){   // switch문을 통해 사칙기호에 따라 연산 진행
                 case '+':
                     result = num1+num2;
@@ -60,8 +63,19 @@ public class App {
                     break;
             }
 
-            System.out.println("계산 결과는 "+result+"입니다.");
-            result = 0;
+            // 연산 결과를 배열에 저장
+            if (count < results.length){   // 배열에 저장공간이 남아있으면 저장
+                results[count] = result;
+                count++;
+                System.out.println("결과가 저장되었습니다.");
+                System.out.println( );
+            }
         }
+
+        // 연산 결과 출력
+        for(int i = 0;i< count;i++){
+            System.out.println((i+1)+"번째 계산 결과는 "+results[i]+"입니다.");
+        }
+        scanner.close();
     }
 }
