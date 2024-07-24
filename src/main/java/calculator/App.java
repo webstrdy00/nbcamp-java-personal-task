@@ -21,7 +21,7 @@ public class App {
             int num1;  
             try {       // 첫번째 숫자 저장 과정
                 num1 = Integer.valueOf(input);
-            }catch (NumberFormatException e){
+            }catch (NumberFormatException e){    // 숫자를 입력하지 않을경우 오류 처리
                 System.out.println("올바른 숫자를 입력하세요.");
                 continue;
             }
@@ -67,8 +67,15 @@ public class App {
             if (count < results.length){   // 배열에 저장공간이 남아있으면 저장
                 results[count] = result;
                 count++;
-                System.out.println("결과가 저장되었습니다.");
-                System.out.println( );
+                System.out.println("결과가 저장되었습니다. (저장된 결과 개수: "+count+")");
+                System.out.println( ); // 계산후 빈 줄 추가
+            }else {   // 배열에 저장공간이 남아있지 않으면 오래된 결과를 삭제하고 저장
+                for (int i = 0;i<results.length-1;i++){   // 배열이 가득 찼을 경우, 모든 요소를 한 칸씩 앞으로 이동
+                    results[i] = results[i+1];
+                }
+                results[results.length-1] = result;   // 새로운 결과를 마지막 위치에 저장
+                System.out.println("결과 저장소가 가득찼습니다. 가장 오래된 결과를 삭제하고 저장합니다.");
+                System.out.println( );  // 계산후 빈 줄 추가
             }
         }
 
