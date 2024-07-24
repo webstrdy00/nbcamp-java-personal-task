@@ -12,5 +12,8 @@ public class App {
 
         System.out.print("두 번쨰 숫자를 입력하세요: ");
         int num2 = scanner.nextInt();  // 두번쨰 숫자 저장
+
+        System.out.print("사칙연산 기호를 입력하세요: ");
+        char oprator = scanner.next().charAt(0);  // 사칙연산 저장
     }
 }
