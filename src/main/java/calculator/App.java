@@ -17,20 +17,13 @@ public class App {
                 System.out.println("프로그램이 종료됩니다.");
                 break;
             }
-//             else if (input.equalsIgnoreCase("remove")) { //  input이 remove일 경우 가장 먼저 저장된 결과 삭제
-//                if (!results.isEmpty()){   // 배열이 비어있지 않을경우
-//                    int removeResult = results.remove(0);   // 가장 먼저 저장된 결과 삭제
-//                    System.out.println("가장 먼저 저장된 결과 " + removeResult+ "가 삭제되었습니다.");
-//                    System.out.println( );
-//                }else{   // 배열이 비어있을 경우
-//                    System.out.println("삭제할 결과가 없습니다.");
-//                    System.out.println( );
-//                }
-//                continue;
-//            } else if (input.equalsIgnoreCase("inquiry")){ //  input이 inquiry 경우 저장된 연산 결과 전부를 출력
-//                printResults(results);
-//                continue;
-//            }
+             else if (input.equalsIgnoreCase("remove")) { //  input이 remove일 경우 가장 먼저 저장된 결과 삭제
+                calculator.removeFirstResult();
+                continue;
+            } else if (input.equalsIgnoreCase("inquiry")){ //  input이 inquiry 경우 저장된 연산 결과 전부를 출력
+                calculator.printResults();
+                continue;
+            }
 
             int num1;  
             try {       // 첫번째 숫자 저장 과정
@@ -56,24 +49,15 @@ public class App {
             try {       // 계산과정 Calculator클래스 적용
                 int result = calculator.calculate(num1, num2, operator);
                 System.out.printf("%d %c %d = %d\n",num1,operator,num2,result);
+                System.out.println("결과가 저장되었습니다. (저장된 결과 개수 "+calculator.getResults().size()+")");
             }catch (CalculatorException e){
                 System.out.println("계산 오류 : "+e.getMessage());
             }
 
             System.out.println( ); // 계산후 빈 줄 추가
         }
+        System.out.println("사칙연산 결과: ");
+        calculator.printResults();
         scanner.close();
-    }
-    // 저장된 결과를 출력하는 메서드
-    private static void printResults(ArrayList<Integer> results) {
-        if (results.isEmpty()){
-            System.out.println("저장된 결과가 없습니다.");
-        }else {
-            int index = 1;
-            for (int result : results){
-                System.out.println(index+"번째 결과는 "+result+"입니다.");
-                index++;
-            }
-        }
     }
 }

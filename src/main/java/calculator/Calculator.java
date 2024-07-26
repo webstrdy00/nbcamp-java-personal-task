@@ -43,4 +43,36 @@ public class Calculator {
         results.add(result);
         return result;
     }
+    public List<Integer> getResults(){     // 저장된 모든 결과값을 가져가는 메서드
+        return new ArrayList<>(results);
+    }
+
+    public void removeFirstResult(){     // 첫번째로 저장된 결과를 삭제하는 메서드
+        if (results.isEmpty()){
+            System.out.println("삭제할 값이 없습니다.");
+            System.out.println( );
+        }else {
+            results.remove(0);
+            System.out.println("가장 먼저 저장된 결과가 삭제되었습니다.");
+            System.out.println( );
+        }
+    }
+
+    public void clearResults(){    // 계산 결과들을 모두 제거하는 메서드
+        results.clear();
+    }
+
+    public void printResults(){    // 저장된 계산 결과들을 보여주는 메서드
+        if (results.isEmpty()){
+            System.out.println("저장된 결과가 없습니다.");
+        }else {
+            System.out.println("저장된 연산 결과");
+            int index = 1;
+            for (int result : results){
+                System.out.println(index+"번째 결과는 "+result+"입니다.");
+                index++;
+            }
+            System.out.println( );
+        }
+    }
 }
