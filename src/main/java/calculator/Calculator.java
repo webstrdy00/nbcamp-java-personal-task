@@ -1,7 +1,9 @@
 package calculator;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 class CalculatorException extends  Exception{      // 사용자정의 예외 클래스
     public CalculatorException(String message){
@@ -11,9 +13,11 @@ class CalculatorException extends  Exception{      // 사용자정의 예외 클
 public abstract class Calculator {
 
     protected List<Double> results;    // 다른 클래스에서 사용해야함으로 private가 아닌 protected로 지정
+    protected Map<Character, Operator> operators;  // 사칙연산 구분을 위한 리스트생성
 
     public Calculator(){    // 생성자
         this.results = new ArrayList<>();
+        this.operators = new HashMap<>();   // HashMap()으로 생성
     }
 
     public List<Double> getResults(){     // 저장된 모든 결과값을 가져가는 메서드
