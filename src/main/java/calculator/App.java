@@ -56,7 +56,7 @@ public class App {
         double num1 = scanner.nextInt();
         System.out.print("두번째 숫자를 입력하세요. ");
         double num2 = scanner.nextInt();
-        System.out.print("사칙연산 기호를 입력 ('+', '-', '*', '/') ");
+        System.out.print("사칙연산 기호를 입력 ('+', '-', '*', '/', '%') ");
         char operator = scanner.next().charAt(0);
 
         try {

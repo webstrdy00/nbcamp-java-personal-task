@@ -7,6 +7,7 @@ public class ArithmeticCalculator extends Calculator{
         operators.put('-', new SubtractOperator());
         operators.put('*', new MultiplyOperator());
         operators.put('/', new DivideOperator());
+        operators.put('%', new ModOperator());
     }
     @Override
     public double calculate(double... params) throws CalculatorException {   // 상속받아 추상클래스구현
